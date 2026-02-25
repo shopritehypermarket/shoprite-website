@@ -121,189 +121,154 @@
 
 </body>
 
-<!-- GROCERY ITEMS -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shoprite Hyper Market</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {font-family: Arial; margin:0; background:#f4f4f4;}
+header {background:green; color:white; text-align:center; padding:20px; font-size:28px;}
+.search {text-align:center; padding:15px;}
+input {padding:8px; width:60%; max-width:300px;}
+.container {text-align:center;}
+.category-title {font-size:22px; margin-top:30px;}
+.product {
+background:white;
+display:inline-block;
+width:220px;
+margin:15px;
+padding:15px;
+border-radius:10px;
+box-shadow:0 0 8px rgba(0,0,0,0.1);
+}
+.product img {width:100%; height:150px; object-fit:cover;}
+.qty-btn {padding:5px 10px; margin:5px;}
+button {background:red; color:white; border:none; padding:6px 12px; border-radius:5px;}
+.cart {background:white; margin:20px; padding:20px; border-radius:10px; text-align:center;}
+.whatsapp {background:#25D366; padding:10px 20px; color:white; text-decoration:none; border-radius:5px;}
+footer {background:black; color:white; text-align:center; padding:10px;}
+</style>
+</head>
+
+<body>
+
+<header>SHOPRITE HYPER MARKET</header>
+
+<div class="search">
+<input type="text" id="searchInput" onkeyup="searchProduct()" placeholder="Search product...">
+</div>
+
+<div class="container" id="productList">
+
+<h2 class="category-title">Grocery</h2>
 
 <div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Rice">
-    <h3>Basmati Rice 1kg</h3>
-    <p>Price: ₹60</p>
-    <button onclick="addToCart(60)">Add to Cart</button>
+<img src="https://via.placeholder.com/200" >
+<h3>Basmati Rice</h3>
+<p>₹60</p>
+<button class="qty-btn" onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button class="qty-btn" onclick="changeQty(this,1)">+</button>
+<br><br>
+<button onclick="addToCart(this,60)">Add to Cart</button>
 </div>
 
 <div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Atta">
-    <h3>Wheat Atta 1kg</h3>
-    <p>Price: ₹45</p>
-    <button onclick="addToCart(45)">Add to Cart</button>
+<img src="https://via.placeholder.com/200">
+<h3>Wheat Atta</h3>
+<p>₹45</p>
+<button class="qty-btn" onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button class="qty-btn" onclick="changeQty(this,1)">+</button>
+<br><br>
+<button onclick="addToCart(this,45)">Add to Cart</button>
 </div>
+
+<h2 class="category-title">Dairy</h2>
 
 <div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Sugar">
-    <h3>Sugar 1kg</h3>
-    <p>Price: ₹40</p>
-    <button onclick="addToCart(40)">Add to Cart</button>
+<img src="https://via.placeholder.com/200">
+<h3>Milk</h3>
+<p>₹30</p>
+<button class="qty-btn" onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button class="qty-btn" onclick="changeQty(this,1)">+</button>
+<br><br>
+<button onclick="addToCart(this,30)">Add to Cart</button>
 </div>
+
+<h2 class="category-title">Snacks</h2>
 
 <div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Salt">
-    <h3>Tata Salt 1kg</h3>
-    <p>Price: ₹25</p>
-    <button onclick="addToCart(25)">Add to Cart</button>
+<img src="https://via.placeholder.com/200">
+<h3>Biscuits</h3>
+<p>₹20</p>
+<button class="qty-btn" onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button class="qty-btn" onclick="changeQty(this,1)">+</button>
+<br><br>
+<button onclick="addToCart(this,20)">Add to Cart</button>
 </div>
+
+<h2 class="category-title">Household</h2>
 
 <div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Oil">
-    <h3>Sunflower Oil 1L</h3>
-    <p>Price: ₹120</p>
-    <button onclick="addToCart(120)">Add to Cart</button>
+<img src="https://via.placeholder.com/200">
+<h3>Surf Excel</h3>
+<p>₹110</p>
+<button class="qty-btn" onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button class="qty-btn" onclick="changeQty(this,1)">+</button>
+<br><br>
+<button onclick="addToCart(this,110)">Add to Cart</button>
 </div>
 
-<!-- DAIRY PRODUCTS -->
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Milk">
-    <h3>Amul Milk</h3>
-    <p>Price: ₹30</p>
-    <button onclick="addToCart(30)">Add to Cart</button>
 </div>
 
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Butter">
-    <h3>Butter 500g</h3>
-    <p>Price: ₹55</p>
-    <button onclick="addToCart(55)">Add to Cart</button>
+<div class="cart">
+<h2>🛒 Total: ₹<span id="total">0</span></h2>
+<a id="whatsappLink" class="whatsapp" target="_blank">Order on WhatsApp</a>
 </div>
 
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Cheese">
-    <h3>Cheese 200g</h3>
-    <p>Price: ₹80</p>
-    <button onclick="addToCart(80)">Add to Cart</button>
-</div>
+<footer>© 2026 Shoprite Hyper Market</footer>
 
-<!-- SNACKS -->
+<script>
+let total = 0;
 
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Biscuits">
-    <h3>Good Day Biscuits</h3>
-    <p>Price: ₹20</p>
-    <button onclick="addToCart(20)">Add to Cart</button>
-</div>
+function changeQty(button, change){
+let qtySpan = button.parentElement.querySelector("span");
+let qty = parseInt(qtySpan.innerText);
+qty += change;
+if(qty < 1) qty = 1;
+qtySpan.innerText = qty;
+}
 
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Chips">
-    <h3>Lays Chips</h3>
-    <p>Price: ₹20</p>
-    <button onclick="addToCart(20)">Add to Cart</button>
-</div>
+function addToCart(button, price){
+let qty = parseInt(button.parentElement.querySelector("span").innerText);
+total += price * qty;
+document.getElementById("total").innerText = total;
 
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Chocolate">
-    <h3>Dairy Milk Chocolate</h3>
-    <p>Price: ₹40</p>
-    <button onclick="addToCart(40)">Add to Cart</button>
-</div>
+let message = "Hello Shoprite Hyper Market, I want to order. Total amount is ₹" + total;
+let link = "https://wa.me/919481392325?text=" + encodeURIComponent(message);
+document.getElementById("whatsappLink").href = link;
+}
 
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Rice">
-    <h3>Basmati Rice 1kg</h3>
-    <p>Price: ₹60</p>
-    <button onclick="addToCart(60)">Add to Cart</button>
-</div>
+function searchProduct(){
+let input = document.getElementById("searchInput").value.toLowerCase();
+let products = document.getElementsByClassName("product");
 
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Atta">
-    <h3>Wheat Atta 1kg</h3>
-    <p>Price: ₹45</p>
-    <button onclick="addToCart(45)">Add to Cart</button>
-</div>
+for(let i=0;i<products.length;i++){
+let name = products[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+if(name.includes(input)){
+products[i].style.display="inline-block";
+}else{
+products[i].style.display="none";
+}
+}
+}
+</script>
 
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Sugar">
-    <h3>Sugar 1kg</h3>
-    <p>Price: ₹40</p>
-    <button onclick="addToCart(40)">Add to Cart</button>
-</div>
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Salt">
-    <h3>Tata Salt 1kg</h3>
-    <p>Price: ₹25</p>
-    <button onclick="addToCart(25)">Add to Cart</button>
-</div>
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Oil">
-    <h3>Sunflower Oil 1L</h3>
-    <p>Price: ₹120</p>
-    <button onclick="addToCart(120)">Add to Cart</button>
-</div>
-
-<!-- DAIRY PRODUCTS -->
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Milk">
-    <h3>Amul Milk</h3>
-    <p>Price: ₹30</p>
-    <button onclick="addToCart(30)">Add to Cart</button>
-</div>
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Butter">
-    <h3>Butter 500g</h3>
-    <p>Price: ₹55</p>
-    <button onclick="addToCart(55)">Add to Cart</button>
-</div>
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Cheese">
-    <h3>Cheese 200g</h3>
-    <p>Price: ₹80</p>
-    <button onclick="addToCart(80)">Add to Cart</button>
-</div>
-
-<!-- SNACKS -->
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Biscuits">
-    <h3>Good Day Biscuits</h3>
-    <p>Price: ₹20</p>
-    <button onclick="addToCart(20)">Add to Cart</button>
-</div>
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Chips">
-    <h3>Lays Chips</h3>
-    <p>Price: ₹20</p>
-    <button onclick="addToCart(20)">Add to Cart</button>
-</div>
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Chocolate">
-    <h3>Dairy Milk Chocolate</h3>
-    <p>Price: ₹40</p>
-    <button onclick="addToCart(40)">Add to Cart</button>
-</div>
-
-<!-- HOUSEHOLD ITEMS -->
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Soap">
-    <h3>Bath Soap</h3>
-    <p>Price: ₹35</p>
-    <button onclick="addToCart(35)">Add to Cart</button>
-</div>
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Shampoo">
-    <h3>Shampoo 180ml</h3>
-    <p>Price: ₹90</p>
-    <button onclick="addToCart(90)">Add to Cart</button>
-</div>
-
-<div class="product">
-    <img src="https://via.placeholder.com/250x180" alt="Detergent">
-    <h3>Surf Excel 1kg</h3>
-    <p>Price: ₹110</p>
-    <button onclick="addToCart(110)">Add to Cart</button>
-</div>
+</body>
+</html>
