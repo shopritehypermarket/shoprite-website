@@ -15,61 +15,36 @@ text-align:center;
 padding:20px;
 font-size:28px;
 font-weight:bold;
+position:relative;
+}
+
+/* ADMIN BUTTON */
+.admin-btn{
+position:absolute;
+right:15px;
+top:20px;
+background:white;
+color:green;
+border:none;
+padding:5px 10px;
+cursor:pointer;
 }
 
 /* SLIDER */
 .slider{
-position:relative;
-height:250px;
-overflow:hidden;
-}
-
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-color:white;
-font-size:30px;
+height:200px;
 display:flex;
 justify-content:center;
 align-items:center;
 background:linear-gradient(to right,#006400,#00a000);
-animation:slide 9s infinite;
-}
-
-.slide:nth-child(2){animation-delay:3s}
-.slide:nth-child(3){animation-delay:6s}
-
-@keyframes slide{
-0%{opacity:0}
-10%{opacity:1}
-30%{opacity:1}
-40%{opacity:0}
-100%{opacity:0}
-}
-
-/* LOGIN */
-.login-box{
-text-align:center;
-padding:20px;
-}
-
-input{padding:8px;margin:5px}
-
-button{
-padding:6px 12px;
-background:green;
 color:white;
-border:none;
-cursor:pointer;
-border-radius:5px;
+font-size:24px;
 }
 
 /* PRODUCTS */
 .container{text-align:center}
 
 .product{
-position:relative;
 background:white;
 display:inline-block;
 width:220px;
@@ -77,11 +52,6 @@ margin:15px;
 padding:10px;
 border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.product:hover{
-transform:scale(1.05);
 }
 
 .product img{
@@ -92,24 +62,32 @@ border-radius:10px;
 }
 
 .badge{
-position:absolute;
-top:10px;
-left:10px;
 background:red;
 color:white;
-padding:5px 8px;
+padding:4px 8px;
 font-size:12px;
 border-radius:5px;
+display:inline-block;
+margin-bottom:5px;
+}
+
+button{
+background:green;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+cursor:pointer;
 }
 
 /* ADMIN PANEL */
 .admin-panel{
-text-align:center;
-padding:20px;
+display:none;
 background:white;
+padding:20px;
 margin:20px;
 border-radius:10px;
-display:none;
+text-align:center;
 }
 
 /* CART */
@@ -133,40 +111,46 @@ padding:15px;
 
 <header>
 SHOPRITE HYPER MARKET
+<button class="admin-btn" onclick="showLogin()">Admin</button>
 </header>
 
-<!-- SLIDER -->
 <div class="slider">
-<div class="slide">🔥 Big Saving Sale 🔥</div>
-<div class="slide">🛒 Buy 1 Get 1 Free</div>
-<div class="slide">💥 Festive Special Offers</div>
+🔥 Welcome to Shoprite Hyper Market 🔥
 </div>
 
-<!-- LOGIN -->
-<div class="login-box">
-<h3>Admin Login</h3>
-<input type="text" id="username" placeholder="Username">
-<input type="password" id="password" placeholder="Password">
-<button onclick="login()">Login</button>
-</div>
-
-<!-- ADMIN PANEL -->
-<div class="admin-panel" id="adminPanel">
-<h3>Add New Product</h3>
-<input type="text" id="pname" placeholder="Product Name">
-<input type="number" id="pprice" placeholder="Price">
-<input type="text" id="pimage" placeholder="Image URL">
-<input type="text" id="poffer" placeholder="Offer Badge (Optional)">
-<button onclick="addProduct()">Add Product</button>
-</div>
-
-<!-- SEARCH -->
 <div style="text-align:center;padding:15px">
 <input type="text" id="searchInput" onkeyup="searchProduct()" placeholder="Search product...">
 </div>
 
 <!-- PRODUCTS -->
-<div class="container" id="productContainer"></div>
+<div class="container" id="productContainer">
+
+<div class="product">
+<div class="badge">SALE</div>
+<img src="https://via.placeholder.com/200">
+<h3>Basmati Rice</h3>
+<p>₹60</p>
+<button onclick="addToCart('Basmati Rice',60)">Add to Cart</button>
+</div>
+
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel" id="adminPanel">
+<h3>Admin Login</h3>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<div id="addProductSection" style="display:none">
+<h3>Add Product</h3>
+<input type="text" id="pname" placeholder="Product Name">
+<input type="number" id="pprice" placeholder="Price">
+<input type="text" id="pimage" placeholder="Image URL">
+<input type="text" id="poffer" placeholder="Offer Badge">
+<button onclick="addProduct()">Add Product</button>
+</div>
+</div>
 
 <!-- CART -->
 <div class="cart">
@@ -182,22 +166,23 @@ SHOPRITE HYPER MARKET
 <script>
 
 let total=0;
-let cart=[];
 
-/* LOGIN SYSTEM */
+function showLogin(){
+document.getElementById("adminPanel").style.display="block";
+}
+
 function login(){
 let user=document.getElementById("username").value;
 let pass=document.getElementById("password").value;
 
 if(user==="admin" && pass==="1234"){
-alert("Login Successful");
-document.getElementById("adminPanel").style.display="block";
+alert("Login Success");
+document.getElementById("addProductSection").style.display="block";
 }else{
 alert("Wrong Login");
 }
 }
 
-/* ADD PRODUCT */
 function addProduct(){
 let name=document.getElementById("pname").value;
 let price=document.getElementById("pprice").value;
@@ -224,9 +209,8 @@ badge+
 container.appendChild(product);
 }
 
-/* CART */
 function addToCart(name,price){
-total+=parseInt(price);
+total+=price;
 document.getElementById("total").innerText=total;
 
 let li=document.createElement("li");
@@ -234,7 +218,6 @@ li.innerText=name+" - ₹"+price;
 document.getElementById("cartItems").appendChild(li);
 }
 
-/* SEARCH */
 function searchProduct(){
 let input=document.getElementById("searchInput").value.toLowerCase();
 let products=document.querySelectorAll(".product");
