@@ -1,154 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Shoprite Hyper Market</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-        }
-
-        header {
-            background: linear-gradient(to right, green, darkgreen);
-            color: white;
-            text-align: center;
-            padding: 25px;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .section {
-            padding: 30px;
-            text-align: center;
-        }
-
-        .box {
-            background-color: white;
-            margin: 15px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            padding: 12px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            background-color: #1ebe5d;
-        }
-
-        footer {
-            background-color: black;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 600px) {
-            header {
-                font-size: 22px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-<header>
-    SHOPRITE HYPER MARKET
-</header>
-
-<div class="section">
-    <h2>Welcome to Shoprite Hyper Market!</h2>
-    <p>Best quality products at best prices. We are happy to serve our valuable customers.</p>
-</div>
-
-<div class="section">
-    <div class="box">
-        <h2>🛒 Our Products</h2>
-        <p>Grocery Items</p>
-        <p>Dairy Products</p>
-        <p>Fresh Fruits & Vegetables</p>
-        <p>Daily Essentials</p>
-    </div>
-
-    <div class="box">
-        <h2>🔥 Today's Offers</h2>
-        <p>Buy 1 Get 1 Free</p>
-        <p>Special Discount on Selected Items</p>
-    </div>
-</div>
-
-<div class="section">
-    <h2>📲 Order on WhatsApp</h2>
-    <a class="btn" href="https://wa.me/919481392325" target="_blank">
-        Order Now on WhatsApp
-    </a>
-</div>
-
-<div class="section">
-    <h2>📍 Our Location</h2>
-    <iframe 
-        src="https://www.google.com/maps?q=Andrahalli&output=embed" 
-        width="90%" 
-        height="250" 
-        style="border:0;">
-    </iframe>
-</div>
-
-<div class="section">
-    <h2>📞 Contact Us</h2>
-    <p>Phone: 9481392325</p>
-    <p>Visit Our Store Today!</p>
-</div>
-
-<footer>
-    © 2026 Shoprite Hyper Market | All Rights Reserved
-</footer>
-
-</body>
-
-<!DOCTYPE html>
-<html>
-<head>
 <title>Shoprite Hyper Market</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {font-family: Arial; margin:0; background:#f4f4f4;}
-header {background:green; color:white; text-align:center; padding:20px; font-size:28px;}
-.search {text-align:center; padding:15px;}
-input {padding:8px; width:60%; max-width:300px;}
-.container {text-align:center;}
-.category-title {font-size:22px; margin-top:30px;}
-.product {
+body{font-family:Arial;margin:0;background:#f4f4f4}
+header{background:green;color:white;text-align:center;padding:20px;font-size:28px}
+.search{text-align:center;padding:10px}
+input{padding:8px;width:60%;max-width:300px}
+.filters{text-align:center;margin:10px}
+.filters button{margin:5px;padding:6px 12px;background:#333;color:white;border:none;border-radius:5px}
+.container{text-align:center}
+.product{
 background:white;
 display:inline-block;
-width:220px;
-margin:15px;
-padding:15px;
+width:200px;
+margin:10px;
+padding:10px;
 border-radius:10px;
-box-shadow:0 0 8px rgba(0,0,0,0.1);
+box-shadow:0 0 8px rgba(0,0,0,0.1)
 }
-.product img {width:100%; height:150px; object-fit:cover;}
-.qty-btn {padding:5px 10px; margin:5px;}
-button {background:red; color:white; border:none; padding:6px 12px; border-radius:5px;}
-.cart {background:white; margin:20px; padding:20px; border-radius:10px; text-align:center;}
-.whatsapp {background:#25D366; padding:10px 20px; color:white; text-decoration:none; border-radius:5px;}
-footer {background:black; color:white; text-align:center; padding:10px;}
+.product img{width:100%;height:140px;object-fit:cover}
+.qty-btn{padding:4px 8px;margin:3px}
+button{cursor:pointer}
+.cart{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:10px;
+}
+.whatsapp{background:#25D366;padding:10px 20px;color:white;text-decoration:none;border-radius:5px}
+footer{background:black;color:white;text-align:center;padding:10px}
 </style>
 </head>
 
@@ -160,113 +43,84 @@ footer {background:black; color:white; text-align:center; padding:10px;}
 <input type="text" id="searchInput" onkeyup="searchProduct()" placeholder="Search product...">
 </div>
 
+<div class="filters">
+<button onclick="filterCategory('all')">All</button>
+<button onclick="filterCategory('grocery')">Grocery</button>
+<button onclick="filterCategory('dairy')">Dairy</button>
+<button onclick="filterCategory('snacks')">Snacks</button>
+<button onclick="filterCategory('household')">Household</button>
+</div>
+
 <div class="container" id="productList">
 
-<h2 class="category-title">Grocery</h2>
+<!-- PRODUCTS -->
 
-<div class="product">
-<img src="https://via.placeholder.com/200" >
-<h3>Basmati Rice</h3>
-<p>₹60</p>
-<button class="qty-btn" onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button class="qty-btn" onclick="changeQty(this,1)">+</button>
-<br><br>
-<button onclick="addToCart(this,60)">Add to Cart</button>
-</div>
+<div class="product grocery"><h3>Basmati Rice</h3><p>₹60</p><button onclick="addToCart('Basmati Rice',60)">Add</button></div>
+<div class="product grocery"><h3>Wheat Atta</h3><p>₹45</p><button onclick="addToCart('Wheat Atta',45)">Add</button></div>
+<div class="product grocery"><h3>Sugar</h3><p>₹40</p><button onclick="addToCart('Sugar',40)">Add</button></div>
+<div class="product grocery"><h3>Salt</h3><p>₹25</p><button onclick="addToCart('Salt',25)">Add</button></div>
+<div class="product grocery"><h3>Sunflower Oil</h3><p>₹120</p><button onclick="addToCart('Sunflower Oil',120)">Add</button></div>
 
-<div class="product">
-<img src="https://via.placeholder.com/200">
-<h3>Wheat Atta</h3>
-<p>₹45</p>
-<button class="qty-btn" onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button class="qty-btn" onclick="changeQty(this,1)">+</button>
-<br><br>
-<button onclick="addToCart(this,45)">Add to Cart</button>
-</div>
+<div class="product dairy"><h3>Milk</h3><p>₹30</p><button onclick="addToCart('Milk',30)">Add</button></div>
+<div class="product dairy"><h3>Butter</h3><p>₹55</p><button onclick="addToCart('Butter',55)">Add</button></div>
+<div class="product dairy"><h3>Cheese</h3><p>₹80</p><button onclick="addToCart('Cheese',80)">Add</button></div>
 
-<h2 class="category-title">Dairy</h2>
+<div class="product snacks"><h3>Biscuits</h3><p>₹20</p><button onclick="addToCart('Biscuits',20)">Add</button></div>
+<div class="product snacks"><h3>Lays</h3><p>₹20</p><button onclick="addToCart('Lays',20)">Add</button></div>
+<div class="product snacks"><h3>Chocolate</h3><p>₹40</p><button onclick="addToCart('Chocolate',40)">Add</button></div>
 
-<div class="product">
-<img src="https://via.placeholder.com/200">
-<h3>Milk</h3>
-<p>₹30</p>
-<button class="qty-btn" onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button class="qty-btn" onclick="changeQty(this,1)">+</button>
-<br><br>
-<button onclick="addToCart(this,30)">Add to Cart</button>
-</div>
-
-<h2 class="category-title">Snacks</h2>
-
-<div class="product">
-<img src="https://via.placeholder.com/200">
-<h3>Biscuits</h3>
-<p>₹20</p>
-<button class="qty-btn" onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button class="qty-btn" onclick="changeQty(this,1)">+</button>
-<br><br>
-<button onclick="addToCart(this,20)">Add to Cart</button>
-</div>
-
-<h2 class="category-title">Household</h2>
-
-<div class="product">
-<img src="https://via.placeholder.com/200">
-<h3>Surf Excel</h3>
-<p>₹110</p>
-<button class="qty-btn" onclick="changeQty(this,-1)">-</button>
-<span>1</span>
-<button class="qty-btn" onclick="changeQty(this,1)">+</button>
-<br><br>
-<button onclick="addToCart(this,110)">Add to Cart</button>
-</div>
+<div class="product household"><h3>Surf Excel</h3><p>₹110</p><button onclick="addToCart('Surf Excel',110)">Add</button></div>
+<div class="product household"><h3>Soap</h3><p>₹35</p><button onclick="addToCart('Soap',35)">Add</button></div>
+<div class="product household"><h3>Shampoo</h3><p>₹90</p><button onclick="addToCart('Shampoo',90)">Add</button></div>
 
 </div>
 
 <div class="cart">
-<h2>🛒 Total: ₹<span id="total">0</span></h2>
+<h2>🛒 Cart Items</h2>
+<ul id="cartItems"></ul>
+<h3>Total: ₹<span id="total">0</span></h3>
 <a id="whatsappLink" class="whatsapp" target="_blank">Order on WhatsApp</a>
 </div>
 
 <footer>© 2026 Shoprite Hyper Market</footer>
 
 <script>
-let total = 0;
+let total=0;
+let cart=[];
 
-function changeQty(button, change){
-let qtySpan = button.parentElement.querySelector("span");
-let qty = parseInt(qtySpan.innerText);
-qty += change;
-if(qty < 1) qty = 1;
-qtySpan.innerText = qty;
-}
+function addToCart(name,price){
+cart.push(name+" - ₹"+price);
+total+=price;
+document.getElementById("total").innerText=total;
 
-function addToCart(button, price){
-let qty = parseInt(button.parentElement.querySelector("span").innerText);
-total += price * qty;
-document.getElementById("total").innerText = total;
+let list=document.getElementById("cartItems");
+let li=document.createElement("li");
+li.innerText=name+" - ₹"+price;
+list.appendChild(li);
 
-let message = "Hello Shoprite Hyper Market, I want to order. Total amount is ₹" + total;
-let link = "https://wa.me/919481392325?text=" + encodeURIComponent(message);
-document.getElementById("whatsappLink").href = link;
+let message="Hello Shoprite Hyper Market, I want to order:\n"+cart.join("\n")+"\nTotal: ₹"+total;
+let link="https://wa.me/91XXXXXXXXXX?text="+encodeURIComponent(message);
+document.getElementById("whatsappLink").href=link;
 }
 
 function searchProduct(){
-let input = document.getElementById("searchInput").value.toLowerCase();
-let products = document.getElementsByClassName("product");
+let input=document.getElementById("searchInput").value.toLowerCase();
+let products=document.querySelectorAll(".product");
+products.forEach(function(p){
+let name=p.querySelector("h3").innerText.toLowerCase();
+p.style.display=name.includes(input)?"inline-block":"none";
+});
+}
 
-for(let i=0;i<products.length;i++){
-let name = products[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
-if(name.includes(input)){
-products[i].style.display="inline-block";
+function filterCategory(category){
+let products=document.querySelectorAll(".product");
+products.forEach(function(p){
+if(category=="all"||p.classList.contains(category)){
+p.style.display="inline-block";
 }else{
-products[i].style.display="none";
+p.style.display="none";
 }
-}
+});
 }
 </script>
 
